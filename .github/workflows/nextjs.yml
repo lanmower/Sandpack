@@ -51,12 +51,12 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
 
       - name: touch nojekyll
-        run: touch .next/.nojekyll
+        run: touch out/.nojekyll
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./.next
+          publish_dir: ./out
           # Specify the branch you want to deploy to
           publish_branch: gh-pages
