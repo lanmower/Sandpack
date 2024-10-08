@@ -50,9 +50,6 @@ jobs:
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
 
-      - name: Export static files
-        run: ${{ steps.detect-package-manager.outputs.runner }} next export
-
   # Deployment job
   deploy:
     runs-on: ubuntu-latest
