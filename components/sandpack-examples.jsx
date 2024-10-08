@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useSandpack, SandpackCodeEditor, SandpackFileExplorer, SandpackLayout, SandpackPreview, SandpackProvider } from "@codesandbox/sandpack-react";
 import { githubLight, sandpackDark } from "@codesandbox/sandpack-themes";
 import apptoapp from './apptoapp'
+
 export const SandpackExamples = () => {
   let [fileState, setFileState] = useState({
     "/App.js": `export default function App() {
@@ -13,7 +14,15 @@ export const SandpackExamples = () => {
   const SimpleCodeViewer = () => {
     const [inputVisible, setInputVisible] = useState(false);
     const [inputValue, setInputValue] = useState("");
-    const [apiKey, setApiKey] = useState(localStorage.getItem('OPENAI_API_KEY') || "");
+    const [apiKey, setApiKey] = useState("");
+
+    useEffect(() => {
+      const storedApiKey = localStorage.getItem('OPENAI_API_KEY');
+      if (storedApiKey) {
+        setApiKey(storedApiKey);
+      }
+    }, []);
+
     const { sandpack } = useSandpack();
     const { files, activeFile } = sandpack;
     const toggleInput = () => {
