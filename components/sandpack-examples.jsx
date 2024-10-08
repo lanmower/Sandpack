@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useSandpack, SandpackCodeEditor, SandpackFileExplorer, SandpackLayout, SandpackPreview, SandpackProvider } from "@codesandbox/sandpack-react";
 import { githubLight, sandpackDark } from "@codesandbox/sandpack-themes";
 import apptoapp from './apptoapp'
-window.process = {env:{}}
 export const SandpackExamples = () => {
   let [fileState, setFileState] = useState({
     "/App.js": `export default function App() {
