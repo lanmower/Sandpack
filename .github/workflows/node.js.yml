@@ -43,7 +43,7 @@ jobs:
     - name: Build project with relative base
       run: |
         echo "Running npm run build..."
-        npm run build --if-present -- --base=./
+        npm run build --if-present
     - name: List dist directory
       run: |
         echo "List files in dist directory after build:"
