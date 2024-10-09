@@ -125,7 +125,7 @@ const SandpackExamples = ({ initialFiles }) => {
   return (
     <SandpackProvider
       files={fileState}
-      //options={{ bundlerURL: "https://sandpack-bundler.codesandbox.io" }}
+      options={{ bundlerURL: "https://sandpack-bundler.codesandbox.io" }}
       theme="light"
       template="nextjs"
     >
