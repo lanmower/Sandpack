@@ -1,7 +1,11 @@
+import { Calendar } from "../@/components/ui/calendar"
 export default function Home({ data }) {
   return (
     <div>
-      <h1>Hello {data}</h1>
+          <Calendar
+      mode="single"
+      className="rounded-md border"
+    />
     </div>
   );
 }
