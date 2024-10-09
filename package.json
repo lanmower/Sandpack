@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "npm run build && touch ./out/.nojekyll && gh-pages -d out -t true"
   },
   "dependencies": {
     "@codesandbox/sandpack-react": "*",
@@ -20,6 +21,11 @@
     "openai": "^4.67.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "touch-cli": "^0.0.1",
     "typescript": "5.0.4"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.1",
+    "raw-loader": "^4.0.2"
   }
 }

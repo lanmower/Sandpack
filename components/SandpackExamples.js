@@ -1,15 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useSandpack, SandpackCodeEditor, SandpackFileExplorer, SandpackLayout, SandpackPreview, SandpackProvider } from "@codesandbox/sandpack-react";
-import { githubLight, sandpackDark } from "@codesandbox/sandpack-themes";
-import apptoapp from './apptoapp'
+import apptoapp from '/lib/apptoapp'; // Ensure you have it in the right directory
 
-export const SandpackExamples = () => {
-  let [fileState, setFileState] = useState({
-    "/App.js": `export default function App() {
-      return <h1>Hello Sandpack</h1>;
-    }`
-  });
+const SandpackExamples = ({ initialFiles }) => {
+  const [fileState, setFileState] = useState(initialFiles);
 
   const SimpleCodeViewer = () => {
     const [inputVisible, setInputVisible] = useState(false);
@@ -24,18 +19,16 @@ export const SandpackExamples = () => {
     }, []);
 
     const { sandpack } = useSandpack();
-    const { files, activeFile } = sandpack;
+    const { files } = sandpack;
+
     const toggleInput = () => {
       setInputVisible(!inputVisible);
     };
 
     const handleSubmit = async (e) => {
       e.preventDefault();
-      // Handle the input value submission here
-      console.log(inputValue);
       const out = await apptoapp(inputValue, files);
-      console.log('setting state to', out)
-      setFileState(out)
+      setFileState(out);
       setInputValue("");
       setInputVisible(false);
     };
@@ -132,8 +125,9 @@ export const SandpackExamples = () => {
   return (
     <SandpackProvider
       files={fileState}
+      //options={{ bundlerURL: "https://sandpack-bundler.codesandbox.io" }}
       theme="light"
-      template="react"
+      template="nextjs"
     >
       <SandpackLayout>
         <SimpleCodeViewer />
@@ -144,3 +138,5 @@ export const SandpackExamples = () => {
     </SandpackProvider>
   );
 };
+
+export default SandpackExamples;
